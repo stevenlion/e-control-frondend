@@ -43,7 +43,9 @@ const createTable = () => {
         addColumn(item.MUNICIPIO_ENVI),
         addColumn(item.POBLACION_DEST),
         addColumn(item.TIPO_DE_CARGA),
-        addColumn(item.ZONA)
+        addColumn(item.ZONA),
+        addColumn(item.VR_UNITARIO),
+        addColumn(item.VR_FLETE)
       ])
     );
   });
@@ -105,8 +107,9 @@ const AdddValueCheck = () => {
     .then((res) => {
       textfiled.value = "";
       flete.value = "";
+      loadNewDataToTable();
     });
-    window.location.href = window.location.href;
+   // window.location.href = window.location.href;
 };
 
 buttton.addEventListener("click", () => AdddValueCheck());
@@ -120,3 +123,10 @@ checkparent.addEventListener("change", () => {
     ck.checked = checkparent.checked ? true : false;
   });
 });
+
+const loadNewDataToTable = ()=>{
+  datos.length = 0;
+  body_table.innerHTML = "";
+  handleGetInfo();
+  
+}
