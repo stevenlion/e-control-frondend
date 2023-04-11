@@ -9,20 +9,24 @@ const searchParams = new URLSearchParams(window.location.search);
 
 const handleGetInfo = () => {
   const form = new FormData();
-  form.append("CAMPANA", searchParams.get("campana"));
-  form.append("CEDI", searchParams.get("distributor"));
-  form.append("MARCA", searchParams.get("selectBrand"));
+  form.append("campana", searchParams.get("campana"));
+  form.append("cedi", searchParams.get("distributor"));
+  form.append("marca", searchParams.get("selectBrand"));
   if (![null, undefined, ""].includes(searchParams.get("zone"))) {
-    form.append("ZONA", searchParams.get("zone"));
+    form.append("zona", searchParams.get("zone"));
   }
   form.append("date_init", searchParams.get("datainit"));
   form.append("date_finish", searchParams.get("dataFinish"));
-  form.append("NOMBRE_PRODUCTO", searchParams.get("product"));
+  form.append("nombre_producto", searchParams.get("product"));
 
   axios
-    .post(host + "/api/dashboard/national-headquarters", form)
+    .post(host + "/api/dashboard/national-headquarters", form, {
+      headers: {
+        "Content-Type": "multipart/formdata",
+      },
+    })
     .then((res) => {
-      // console.log(res.data)
+      console.log(res.data);
 
       if (!res.data.status) {
         datos.push(...res.data);
