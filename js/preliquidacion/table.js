@@ -44,8 +44,8 @@ const createTable = () => {
         addColumn(item.POBLACION_DEST),
         addColumn(item.TIPO_DE_CARGA),
         addColumn(item.ZONA),
-        addColumn(item.VR_UNITARIO),
-        addColumn(item.VR_FLETE)
+        // addColumn(item.VR_UNITARIO),
+        // addColumn(item.VR_FLETE),
       ])
     );
   });
@@ -71,26 +71,32 @@ const CreateCheckbox = (key) => {
   checkbox.value = JSON.stringify(key);
   checkbox.name = "marcas";
   checkbox.type = "checkbox";
+  checkbox.classList.add("form-check-input", "mt-3");
   return checkbox;
 };
 
 const AdddValueCheck = () => {
   const chek = document.querySelectorAll("input[name='marcas']:checked");
   const values = Array.from(chek).map((item) => item.value);
+  buttton.disabled = true;
 
   if (["", "0"].includes(textfiled.value)) {
     textfiled.classList.add("is-invalid");
+    buttton.disabled = false;
     return false;
   } else {
     textfiled.classList.remove("is-invalid");
   }
 
-  if (["", "0"].includes(flete.value)) {
+  if (["", null].includes(flete.value)) {
     flete.classList.add("is-invalid");
+    flete.value = 0;
+    buttton.disabled = false;
     return false;
   } else {
     flete.classList.remove("is-invalid");
   }
+
   axios
     .put(host + "/api/dashboard/update-pre-settlement-national-offices", {
       CAMPANA: searchParams.get("campana"),
@@ -108,8 +114,9 @@ const AdddValueCheck = () => {
       textfiled.value = "";
       flete.value = "";
       loadNewDataToTable();
+      buttton.disabled = false;
     });
-   // window.location.href = window.location.href;
+  // window.location.href = window.location.href;
 };
 
 buttton.addEventListener("click", () => AdddValueCheck());
@@ -124,9 +131,8 @@ checkparent.addEventListener("change", () => {
   });
 });
 
-const loadNewDataToTable = ()=>{
+const loadNewDataToTable = () => {
   datos.length = 0;
   body_table.innerHTML = "";
   handleGetInfo();
-  
-}
+};
