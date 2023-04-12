@@ -27,6 +27,10 @@
     <title>prueba</title>
 
     <style>
+      .table-responsive {
+        height: 400px;
+        overflow: scroll;
+      }
       .list-group {
         --bs-list-group-color: #212529;
         --bs-list-group-bg: #fff;
@@ -115,11 +119,61 @@
         <div class="row">
           <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3">
             <ul class="list-group mb-3">
-              <li class="list-group-item">TOTAL MASIVOS:45</li>
-              <li class="list-group-item">TOTAL ADICIONALES:60</li>
-              <li class="list-group-item">VEREDAS:70</li>
-              <li class="list-group-item">SEGUNDAS CAJAS:90</li>
-              <li class="list-group-item">TOTAL:33303</li>
+
+              <li class="list-group-item active text-center">
+                RESUMEN
+              </li>
+
+              <li class="list-group-item" id="read-amount-bulk-total">
+                TOTAL MASIVOS:
+                <div
+                  class="spinner-border spinner-border-sm ms-3 text-primary"
+                  role="status"
+                >
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </li>
+
+              <li class="list-group-item" id="read-amount-additional">
+                TOTAL ADICIONALES:
+                <div
+                  class="spinner-border spinner-border-sm ms-3 text-primary"
+                  role="status"
+                >
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </li>
+
+              <li class="list-group-item" id="read-total-sidewalks">
+                VEREDAS:
+                <div
+                  class="spinner-border spinner-border-sm ms-3 text-primary"
+                  role="status"
+                >
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </li>
+
+              <li class="list-group-item" id="read-number-second-Boxes">
+                SEGUNDAS CAJAS:
+                <div
+                  class="spinner-border spinner-border-sm ms-3 text-primary"
+                  role="status"
+                >
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </li>
+
+              <li class="list-group-item" id="read-total-pre-settlement">
+                TOTAL:
+                <div
+                  class="spinner-border spinner-border-sm ms-3 text-primary"
+                  role="status"
+                >
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </li>
+
             </ul>
           </div>
 
@@ -140,26 +194,28 @@
                     <th>TOTAL</th>
                     <th>CAMPAÑA</th>
                     <th>MARCA</th>
-                    <th>MUNICIPIO ENVI</th>
-                    <th>POBLACION DESTINO</th>
-                    <th>TIPO DE CARGA</th>
+                    <th>MUNI. ENVI</th>
+                    <th>POBLACION DES.</th>
+                    <th>TIPO CARGA</th>
                     <th>ZONA</th>
-                    <!-- <th>VALOR </th>
-                  <th>FLETE</th> -->
                   </tr>
                 </thead>
-                <tbody id="table"></tbody>
+                <tbody id="table">
+                  
+                </tbody>
               </table>
             </div>
           </div>
         </div>
       </div>
+      <hr />
+      <!-- ---------------------- -->
     </div>
 
     <script src="vendor/global/global.min.js"></script>
     <script src="js/custom.min.js"></script>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
-    <script src="js/preliquidacion/table.js"></script>
+    <script src="js/preliquidacion/TableMasisve.js"></script>
   </body>
 </html>
