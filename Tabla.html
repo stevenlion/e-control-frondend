@@ -119,12 +119,9 @@
         <div class="row">
           <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3">
             <ul class="list-group mb-3">
+              <li class="list-group-item active text-center">RESUMEN</li>
 
-              <li class="list-group-item active text-center">
-                RESUMEN
-              </li>
-
-              <li class="list-group-item" id="read-amount-bulk-total">
+              <li class="list-group-item read-amount-bulk-total">
                 TOTAL MASIVOS:
                 <div
                   class="spinner-border spinner-border-sm ms-3 text-primary"
@@ -134,7 +131,7 @@
                 </div>
               </li>
 
-              <li class="list-group-item" id="read-amount-additional">
+              <li class="list-group-item read-amount-additional">
                 TOTAL ADICIONALES:
                 <div
                   class="spinner-border spinner-border-sm ms-3 text-primary"
@@ -144,7 +141,7 @@
                 </div>
               </li>
 
-              <li class="list-group-item" id="read-total-sidewalks">
+              <li class="list-group-item read-total-sidewalks">
                 VEREDAS:
                 <div
                   class="spinner-border spinner-border-sm ms-3 text-primary"
@@ -154,7 +151,7 @@
                 </div>
               </li>
 
-              <li class="list-group-item" id="read-number-second-Boxes">
+              <li class="list-group-item read-number-second-boxes">
                 SEGUNDAS CAJAS:
                 <div
                   class="spinner-border spinner-border-sm ms-3 text-primary"
@@ -164,7 +161,7 @@
                 </div>
               </li>
 
-              <li class="list-group-item" id="read-total-pre-settlement">
+              <li class="list-group-item read-total-pre-settlement">
                 TOTAL:
                 <div
                   class="spinner-border spinner-border-sm ms-3 text-primary"
@@ -173,7 +170,6 @@
                   <span class="visually-hidden">Loading...</span>
                 </div>
               </li>
-
             </ul>
           </div>
 
@@ -200,15 +196,139 @@
                     <th>ZONA</th>
                   </tr>
                 </thead>
-                <tbody id="table">
-                  
-                </tbody>
+                <tbody id="table"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <hr/>
+        <!-- -----------------------addicionales----------------------- -->
+        <div class="row mt-4">
+          <div class="col-12 col-sm-12 col-md col-lg-5">
+            <div class="mb-3">
+              <input
+                type="number"
+                class="form-control"
+                id="unitario_additional"
+                placeholder="ingrese valor"
+                autocomplete="off"
+                style="height: 45px"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md col-lg-5">
+            <div class="mb-3">
+              <input
+                type="number"
+                class="form-control"
+                id="flete_additional"
+                placeholder="ingrese flete"
+                autocomplete="off"
+                style="height: 45px"
+                required
+              />
+            </div>
+          </div>
+
+          <div class="col-12 col-sm-12 col-md-3 col-lg-2 mb-3">
+            <button
+              type="button"
+              class="btn btn-primary btn-sm w-100"
+              id="buton_additional"
+            >
+              Pre-Liquidar
+            </button>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-12 col-md-12 col-lg-4 col-xl-3">
+            <ul class="list-group mb-3">
+              <li class="list-group-item active text-center">RESUMEN</li>
+
+              <li class="list-group-item read-amount-bulk-total">
+                TOTAL MASIVOS:
+                <div
+                  class="spinner-border spinner-border-sm ms-3 text-primary"
+                  role="status"
+                >
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </li>
+
+              <li class="list-group-item read-amount-additional">
+                TOTAL ADICIONALES:
+                <div
+                  class="spinner-border spinner-border-sm ms-3 text-primary"
+                  role="status"
+                >
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </li>
+
+              <li class="list-group-item read-total-sidewalks">
+                VEREDAS:
+                <div
+                  class="spinner-border spinner-border-sm ms-3 text-primary"
+                  role="status"
+                >
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </li>
+
+              <li class="list-group-item read-number-second-boxes">
+                SEGUNDAS CAJAS:
+                <div
+                  class="spinner-border spinner-border-sm ms-3 text-primary"
+                  role="status"
+                >
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </li>
+
+              <li class="list-group-item read-total-pre-settlement">
+                TOTAL:
+                <div
+                  class="spinner-border spinner-border-sm ms-3 text-primary"
+                  role="status"
+                >
+                  <span class="visually-hidden">Loading...</span>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div
+            class="col-12 col-sm-12 col-md-12 col-lg-8 col-xl-9 shadow-sm bg-white"
+          >
+            <div class="table-responsive">
+              <table class="table table-hover text-center align-middle">
+                <thead>
+                  <tr>
+                    <th>
+                      <input
+                        type="checkbox"
+                        id="checket_parent_additional"
+                        class="form-check-input"
+                      />
+                    </th>
+                    <th>TOTAL</th>
+                    <th>CAMPAÑA</th>
+                    <th>MARCA</th>
+                    <th>MUNI. ENVI</th>
+                    <th>POBLACION DES.</th>
+                    <th>TIPO CARGA</th>
+                    <th>ZONA</th>
+                  </tr>
+                </thead>
+                <tbody id="table-additional"></tbody>
               </table>
             </div>
           </div>
         </div>
       </div>
-      <hr />
       <!-- ---------------------- -->
     </div>
 
@@ -217,5 +337,6 @@
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="js/preliquidacion/TableMasisve.js"></script>
+    <script src="js/preliquidacion/TableAdditional.js"></script>
   </body>
 </html>
