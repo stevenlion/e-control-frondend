@@ -8,6 +8,32 @@ let datos = [];
 const searchParams = new URLSearchParams(window.location.search);
 
 
+function readAmountAdditional() {
+  const form = new FormData();
+  form.append("campana", searchParams.get("campana"));
+  form.append("cedi", searchParams.get("distributor"));
+  form.append("marca", searchParams.get("selectBrand"));
+  form.append("date_init", searchParams.get("datainit"));
+  form.append("date_finish", searchParams.get("dataFinish"));
+  form.append("nombre_producto", searchParams.get("product"));
+
+  axios
+    .post(host + "/api/dashboard/summary/read/amount-additional", form, {
+      headers: {
+        "Content-Type": "multipart/formdata",
+      },
+    })
+    .then((res) => {
+      document.querySelectorAll(
+        ("ul.list-group > li.read-amount-additional")
+      ).forEach((Additiona)=> Additiona.textContent = `TOTAL ADICIONALES: ${
+        res.data.total == null ? 0 : res.data.total
+      }`)
+      
+    
+    });
+}
+
 const checkParents =(id_check,name)=>{
   id_check.addEventListener("change", () => {
     const not = `input[name='${name}']:not(input[name='${name}']:checked)`;
@@ -53,6 +79,7 @@ const handleGetInfo = () => {
       }
     });
 };
+
 
 handleGetInfo();
 
@@ -149,7 +176,6 @@ const AdddValueCheck = () => {
 
 buttton.addEventListener("click", () => AdddValueCheck());
 
-
 function readAmountBulkTotal() {
   const form = new FormData();
   form.append("campana", searchParams.get("campana"));
@@ -223,31 +249,6 @@ function readTotalSidewalks() {
     });
 }
 
-function readAmountAdditional() {
-  const form = new FormData();
-  form.append("campana", searchParams.get("campana"));
-  form.append("cedi", searchParams.get("distributor"));
-  form.append("marca", searchParams.get("selectBrand"));
-  form.append("date_init", searchParams.get("datainit"));
-  form.append("date_finish", searchParams.get("dataFinish"));
-  form.append("nombre_producto", searchParams.get("product"));
-
-  axios
-    .post(host + "/api/dashboard/summary/read/amount-additional", form, {
-      headers: {
-        "Content-Type": "multipart/formdata",
-      },
-    })
-    .then((res) => {
-      document.querySelectorAll(
-        ("ul.list-group > li.read-amount-additional")
-      ).forEach((Additiona)=> Additiona.textContent = `TOTAL ADICIONALES: ${
-        res.data.total == null ? 0 : res.data.total
-      }`)
-      
-    
-    });
-}
 
 function readTotalPreSettlement() {
   const form = new FormData();

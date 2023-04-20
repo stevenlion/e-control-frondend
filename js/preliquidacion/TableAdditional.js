@@ -3,7 +3,9 @@ let datos_addtional = [];
 const button_aditional = document.getElementById("buton_additional");
 const textfield_unitario = document.getElementById("unitario_additional");
 const textflield_flete = document.getElementById("flete_additional");
-const checkparants_additional = document.getElementById("checket_parent_additional");
+const checkparants_additional = document.getElementById(
+  "checket_parent_additional"
+);
 
 const handleGetInfoAdditional = () => {
   const form = new FormData();
@@ -48,8 +50,12 @@ const createTableAdditional = () => {
 
 if (button_aditional) {
   button_aditional.addEventListener("click", () => {
-    const chekeds = document.querySelectorAll("input[name='adicional']:checked");
-    const values_chekeds_additional = Array.from(chekeds).map((item) => JSON.parse(item.value));
+    const chekeds = document.querySelectorAll(
+      "input[name='adicional']:checked"
+    );
+    const values_chekeds_additional = Array.from(chekeds).map((item) =>
+      JSON.parse(item.value)
+    );
     button_aditional.disabled = true;
 
     if (["", "0"].includes(textfield_unitario.value)) {
@@ -69,13 +75,36 @@ if (button_aditional) {
       textflield_flete.classList.remove("is-invalid");
     }
 
-    loadNewDataToTable(datos_addtional,table_addtional,handleGetInfoAdditional);
-
-    console.log(values_chekeds_additional);
-    console.log(textfield_unitario.value);
-    console.log(textflield_flete.value);
-    button_aditional.disabled = false;
+    axios
+      .put(host + "/api/dashboard/additional/upgrade-additional", {
+        campana: searchParams.get("campana"),
+        cedi: searchParams.get("distributor"),
+        marca: searchParams.get("selectBrand"),
+        date_init: searchParams.get("datainit"),
+        date_finish: searchParams.get("dataFinish"),
+        nombre_producto: searchParams.get("product"),
+        zona: searchParams.get("zone"),
+        valor: textfield_unitario.value,
+        flete: textflield_flete.value,
+        rows: values_chekeds_additional,
+      })
+      .then((res) => {
+        if (res.data.status === "error") {
+          // alert(res.data.message);
+        } else {
+          // alert("super");
+          textfield_unitario.value = "";
+          textflield_flete.value = "";
+          loadNewDataToTable(
+            datos_addtional,
+            table_addtional,
+            handleGetInfoAdditional
+          );
+          button_aditional.disabled = false;
+          readAmountAdditional();
+        }
+      });   
   });
 }
 
-checkParents(checkparants_additional,"adicional")
+checkParents(checkparants_additional, "adicional");
